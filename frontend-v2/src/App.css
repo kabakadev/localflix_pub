@@ -1,0 +1,2213 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+/* ─── THEME VARIABLES ───────────────────────────────────────────────────── */
+:root {
+  --bg: #f0eff4;
+  --bg2: #e4e3ea;
+  --surface: #ffffff;
+  --surface2: #f7f7fb;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #0d0d14;
+  --text-muted: #6b7280;
+  --accent: #e50914;
+  --accent2: #ff6b6b;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.18);
+  --header-h: 68px;
+}
+
+.dark-theme {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --surface: #16161f;
+  --surface2: #1c1c28;
+  --border: rgba(255, 255, 255, 0.06);
+  --text: #f0f0f8;
+  --text-muted: #6b7280;
+  --accent: #e50914;
+  --accent2: #ff6b6b;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* ─── RESET & BASE ──────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── HEADER ────────────────────────────────────────────────────────────── */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+}
+
+.brand-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.header-controls {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.search-bar {
+  width: 100%;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem 0.6rem 2.4rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-bar:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.12);
+}
+
+.filters {
+  display: flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.filters button {
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.filters button:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.filters button.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: var(--surface2);
+  transform: scale(1.05);
+}
+
+/* ─── HERO BANNER ───────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  margin-top: var(--header-h);
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hero-bg.fading {
+  opacity: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: brightness(0.55);
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      transparent 100%
+    ),
+    linear-gradient(to top, var(--bg) 0%, transparent 40%);
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  padding: 0 4rem;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 3px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.hero-badge.movie {
+  background: var(--accent);
+  color: #fff;
+}
+.hero-badge.episode {
+  background: #2563eb;
+  color: #fff;
+}
+.hero-badge.reel {
+  background: #7c3aed;
+  color: #fff;
+}
+.hero-badge.short_video {
+  background: #d97706;
+  color: #fff;
+}
+
+.hero-duration {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
+
+.hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-filename {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-play-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hero-play-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.03);
+}
+
+.play-icon {
+  font-size: 0.9rem;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 60px;
+  right: 3rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 3;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.hero-dot.active {
+  background: #fff;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.hero-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 3;
+}
+
+.hero-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  animation: heroProgress 8s linear forwards;
+}
+
+@keyframes heroProgress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ─── MAIN CONTENT ──────────────────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+/* When there's no hero (search/filter active), add top margin */
+.main-content:first-child {
+  margin-top: var(--header-h);
+}
+
+.netflix-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ─── ROW HEADER WITH TOGGLE ────────────────────────────────────────────── */
+.row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-right: 0.5rem;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.view-toggle button {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.view-toggle button:first-child {
+  border-right: 1px solid var(--border);
+}
+
+.view-toggle button:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+.view-toggle button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ─── SEASON STACK (by-season view) ────────────────────────────────────── */
+.season-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.season-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.season-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-left: 0.5rem;
+}
+
+.media-row-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  will-change: tranform;
+}
+
+.row-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  color: var(--text);
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--accent);
+}
+
+.carousel-wrapper {
+  position: relative;
+  /* This is the key fix: create a new stacking context so z-index on cards works */
+  isolation: isolate;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: visible; /* Allow pop-out cards to escape vertically */
+  padding: 1.5rem 0.5rem; /* Vertical padding so scaled cards aren't clipped */
+  min-height: calc(
+    216px + 3rem
+  ); /* CARD_H (216) + 2×1.5rem padding — must match CARD_H constant in App.jsx */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── SCROLL ARROWS ─────────────────────────────────────────────────────── */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 80px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+  line-height: 1;
+}
+
+.scroll-arrow:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-50%) scaleX(1.05);
+}
+
+.scroll-arrow.left {
+  left: -8px;
+}
+.scroll-arrow.right {
+  right: -8px;
+}
+
+/* ─── CARDS ─────────────────────────────────────────────────────────────── */
+.card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  /* Proper stacking context for z-index to work */
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s ease, z-index 0s 0.3s; /* delay z-index reset until after animation */
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  transform: scale(1.08);
+  z-index: 20; /* high enough to be above siblings */
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s ease, z-index 0s; /* apply z-index instantly on hover in */
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg2);
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.card:hover .img-container img {
+  filter: brightness(0.75);
+}
+
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-btn {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  padding-left: 3px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-info {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.size {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.duration-pill {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+/* ─── BADGES ────────────────────────────────────────────────────────────── */
+.badge {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.badge.movie {
+  background: var(--accent);
+  color: #fff;
+}
+.badge.episode {
+  background: #2563eb;
+  color: #fff;
+}
+.badge.reel {
+  background: #7c3aed;
+  color: #fff;
+}
+.badge.short {
+  background: #d97706;
+  color: #fff;
+}
+
+/* ─── SETTINGS OVERLAY ──────────────────────────────────────────────────── */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.settings-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: 560px;
+  max-width: 95vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-header h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: var(--border);
+}
+
+.settings-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.settings-section h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.settings-select {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.settings-select:focus {
+  border-color: var(--accent);
+}
+
+.settings-input {
+  flex: 1;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.settings-input:focus {
+  border-color: var(--accent);
+}
+
+.settings-number {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  width: 70px;
+  text-align: center;
+  outline: none;
+}
+
+.dir-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.dir-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+
+.dir-path {
+  flex: 1;
+  font-size: 0.85rem;
+  font-family: monospace;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.dir-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.dir-remove:hover {
+  color: var(--accent);
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.dir-add {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.add-btn:hover {
+  opacity: 0.88;
+}
+
+.settings-footer {
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.save-btn {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.save-btn:hover {
+  opacity: 0.9;
+}
+.save-btn:active {
+  transform: scale(0.99);
+}
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.settings-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ─── EMPTY & LOADING STATES ────────────────────────────────────────────── */
+.no-results {
+  text-align: center;
+  padding: 6rem 2rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.no-results p:first-child {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.no-results button {
+  margin-top: 1rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.settings-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+/* ─── WATCH PROGRESS ────────────────────────────────────────────────────── */
+.card-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 3;
+}
+
+.card-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.3s ease;
+}
+
+.card-completed-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #4ade80;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  z-index: 3;
+}
+
+.card--completed .img-container img {
+  filter: brightness(0.5) saturate(0.4);
+}
+
+/* ─── CONTINUE WATCHING ROW ─────────────────────────────────────────────── */
+.continue-watching-row {
+  padding: 1rem 0 0.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+}
+
+.row-title--continue {
+  color: var(--accent);
+  border-left-color: var(--accent2);
+}
+
+/* ─── TOAST NOTIFICATION ────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 999;
+  pointer-events: none;
+  animation: toastIn 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  white-space: nowrap;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ─── POSTER IMAGE TRANSITIONS ──────────────────────────────────────────── */
+.img-container img {
+  transition: opacity 0.4s ease, filter 0.3s ease;
+}
+
+.img-loading {
+  opacity: 0;
+  filter: blur(8px);
+}
+
+.img-loaded {
+  opacity: 1;
+  filter: none;
+}
+
+/* ─── POSTER SOURCE BADGE ───────────────────────────────────────────────── */
+.poster-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  z-index: 3;
+  opacity: 0.85;
+}
+
+.poster-badge--tmdb {
+  background: #01b4e4;
+  color: #fff;
+}
+
+.poster-badge--anilist {
+  background: #02a9ff;
+  color: #fff;
+}
+
+/* ─── PASTE THESE ADDITIONS INTO App.css ───────────────────────────────────
+   Add anywhere — e.g. after the .toast block at the bottom               */
+
+/* ─── SCAN STATUS BANNER ────────────────────────────────────────────────── */
+.scan-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 2rem;
+}
+
+.scan-banner-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scan-banner-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.scan-banner-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scan-banner-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.scan-banner-fill--indeterminate {
+  width: 40% !important;
+  animation: indeterminate 1.4s ease-in-out infinite;
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+.scan-banner ~ .app-header {
+  top: 29px;
+}
+
+/* ─── PENDING DURATION PILL ─────────────────────────────────────────────── */
+.duration-pill--pending {
+  opacity: 0.5;
+  font-size: 0.65rem;
+}
+
+/* ─── CARD IMAGE — blur-in transition when poster swaps in ─────────────── */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.card-img--poster {
+  object-position: center top;
+}
+
+.img-container img {
+  animation: imgFadeIn 0.4s ease;
+}
+
+@keyframes imgFadeIn {
+  from {
+    opacity: 0;
+    filter: blur(8px) brightness(0.6);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+  }
+}
+
+/* ─── SETTINGS — TMDB / POSTER STATUS ──────────────────────────────────── */
+.settings-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+}
+
+.settings-hint a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.settings-hint a:hover {
+  text-decoration: underline;
+}
+
+.poster-status {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.poster-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.poster-reset-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: inherit;
+  padding: 3px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.poster-reset-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.poster-progress-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.poster-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   LOCALFLIX — App.css ADDITIONS
+   Paste ALL of this at the bottom of your existing App.css
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── 1. SCAN STATUS BANNER ─────────────────────────────────────────────── */
+.scan-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 2rem;
+}
+
+.scan-banner-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scan-banner-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.scan-banner-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scan-banner-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.scan-banner-fill--indeterminate {
+  width: 40% !important;
+  animation: indeterminate 1.4s ease-in-out infinite;
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+.scan-banner ~ .app-header {
+  top: 29px;
+}
+
+/* ─── 2. PENDING DURATION PILL ──────────────────────────────────────────── */
+.duration-pill--pending {
+  opacity: 0.5;
+  font-size: 0.65rem;
+}
+
+/* ─── 3. CARD IMAGE — blur-in when poster swaps in ─────────────────────── */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.card-img--poster {
+  object-position: center top;
+}
+
+.img-container img {
+  animation: imgFadeIn 0.4s ease;
+}
+
+@keyframes imgFadeIn {
+  from {
+    opacity: 0;
+    filter: blur(8px) brightness(0.6);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+  }
+}
+
+/* ─── 4. SETTINGS — TMDB / POSTER STATUS ───────────────────────────────── */
+.settings-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+}
+
+.settings-hint a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.settings-hint a:hover {
+  text-decoration: underline;
+}
+
+.poster-status {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.poster-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.poster-reset-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: inherit;
+  padding: 3px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.poster-reset-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.poster-progress-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.poster-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* ─── 5. VIRTUALISER — carousel + card overrides ────────────────────────
+   These override the existing .carousel and .card rules in App.css.
+   They MUST come AFTER those rules (i.e. at the bottom of the file)
+   so they win the cascade.
+   ──────────────────────────────────────────────────────────────────────── */
+
+/* Remove flex layout — the virtualizer inner track handles item placement.
+   Add explicit height so the position:relative inner track has something
+   to fill (without it the track collapses to 0 and cards disappear). */
+.carousel {
+  display: block !important; /* override existing display:flex */
+  height: 260px; /* enough for card + padding */
+  overflow-x: auto;
+  overflow-y: visible; /* keep hover pop-out working */
+  padding: 1.5rem 0.5rem;
+  scroll-behavior: smooth;
+  /* scroll-snap-type removed — virtualizer owns scroll physics */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cards are no longer flex children — replace flex-basis with margin-right
+   so the 16px gap is preserved without flex gap. scroll-snap-align removed. */
+.card {
+  flex: none !important; /* override existing flex: 0 0 260px */
+  width: 260px;
+  margin-right: 16px; /* replaces gap: 1rem from flex parent */
+  /* all other card styles (.card hover, z-index, transitions) unchanged */
+}
+
+/* ─── FIRST-RUN SETUP SCREEN ─────────────────────────────────────────────── */
+.firstrun-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.firstrun-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  animation: slideUp 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.firstrun-card--wide {
+  max-width: 580px;
+  text-align: left;
+  align-items: stretch;
+}
+
+.firstrun-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.firstrun-step-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.firstrun-step-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.firstrun-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  color: var(--text);
+  line-height: 1;
+}
+
+.firstrun-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 38ch;
+}
+
+.firstrun-card--wide .firstrun-subtitle {
+  max-width: unset;
+}
+
+/* Input row */
+.firstrun-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.firstrun-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.firstrun-path-input {
+  width: 100%;
+  padding-right: 2rem;
+}
+
+.firstrun-path-input.input--valid {
+  border-color: #4ade80;
+}
+
+.firstrun-path-input.input--invalid {
+  border-color: var(--accent);
+}
+
+.firstrun-path-status {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.firstrun-path-warning {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: -0.5rem;
+}
+
+/* Subdirectory suggestions */
+.firstrun-suggestions {
+  margin-top: -0.25rem;
+}
+
+.firstrun-suggestions-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.firstrun-suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.firstrun-suggestion-chip {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: monospace;
+  padding: 3px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.firstrun-suggestion-chip:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+/* Added directories list */
+.firstrun-dirs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.firstrun-dir-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+.firstrun-dir-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.firstrun-dir-path {
+  flex: 1;
+  font-size: 0.82rem;
+  font-family: monospace;
+  color: var(--text);
+  word-break: break-all;
+}
+
+/* Buttons */
+.firstrun-btn-add {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.firstrun-btn-add:hover:not(:disabled) {
+  background: var(--border);
+}
+
+.firstrun-btn-add:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.firstrun-btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  align-self: center;
+  min-width: 200px;
+}
+
+.firstrun-btn-primary:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.firstrun-btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.firstrun-btn-primary:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.firstrun-btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.firstrun-btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.firstrun-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+/* Done step checkmark */
+.firstrun-done-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(74, 222, 128, 0.15);
+  border: 2px solid #4ade80;
+  color: #4ade80;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+/*
+Used
+  in
+  Settings
+  →
+  Content
+  section
+  for
+  the
+  index_shorts_reels
+  toggle.
+  */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--border);
+  border-radius: 24px;
+  transition: background 0.2s;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--accent);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* ─── SETTINGS WARNING BOX ──────────────────────────────────────────────── */
+.settings-warning {
+  margin-top: 0.6rem;
+  background: rgba(229, 9, 20, 0.08);
+  border: 1px solid rgba(229, 9, 20, 0.25);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  line-height: 1.5;
+}
+
+/* ─── CARD TRASH BUTTON ─────────────────────────────────────────────────── */
+.card-trash-btn {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.72);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.82rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.18s ease, transform 0.18s ease, background 0.15s;
+  pointer-events: none;
+}
+
+.card:hover .card-trash-btn {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.card-trash-btn:hover {
+  background: rgba(229, 9, 20, 0.88);
+}
+
+/* ─── DELETE CONFIRM MODAL ──────────────────────────────────────────────── */
+.delete-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.15s ease;
+}
+
+.delete-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem 2rem 1.5rem;
+  width: 360px;
+  max-width: 92vw;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.delete-modal-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.delete-modal-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+
+.delete-modal-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.delete-modal-filename {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  word-break: break-all;
+  line-height: 1.45;
+}
+
+.delete-modal-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.delete-modal-hint code {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: var(--text);
+}
+
+.delete-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.delete-modal-cancel {
+  flex: 1;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.delete-modal-cancel:hover {
+  background: var(--border);
+}
+
+.delete-modal-confirm {
+  flex: 1;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.delete-modal-confirm:hover {
+  opacity: 0.88;
+}
+
+/* ─── ERROR SCREEN ───────────────────────────────────────────────────────── */
+.error-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+.error-screen-inner {
+  text-align: center;
+  max-width: 420px;
+  padding: 2rem;
+}
+.error-screen-icon {
+  font-size: 3rem;
+  margin-bottom: 1.25rem;
+}
+.error-screen-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+.error-screen-msg {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+.error-screen-retry {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2.5rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.error-screen-retry:hover {
+  opacity: 0.85;
+}
+/* ─── ROW VIRTUALIZER SPACING ───────────────────────────────────────────────
+   .netflix-layout gap:3rem doesn't reach absolutely-positioned rows.
+   Padding-bottom on the content container is measured by ResizeObserver,
+   so it becomes the gap between virtualised rows.                       */
+.media-row-container {
+  padding-bottom: 3rem;
+}
+.rescan-btn {
+  width: 100%;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.rescan-btn:hover:not(:disabled) {
+  background: var(--border);
+  border-color: var(--text-muted);
+}
+
+.rescan-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.ctx-menu {
+  position: fixed;
+  z-index: 500;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.4rem 0;
+  min-width: 200px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.12s ease;
+  user-select: none;
+}
+
+.ctx-menu-title {
+  padding: 0.45rem 1rem 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+  letter-spacing: 0.3px;
+}
+
+.ctx-menu-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.3rem 0;
+}
+
+.ctx-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.55rem 1rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.ctx-menu-item:hover {
+  background: var(--surface2);
+}
+
+.ctx-menu-item--danger {
+  color: var(--accent);
+}
+
+.ctx-menu-item--danger:hover {
+  background: rgba(229, 9, 20, 0.08);
+}
+
+.ctx-menu-icon {
+  font-size: 0.9rem;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.stats-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+.stats-value {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: var(--text);
+  line-height: 1;
+}
+
+.stats-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.stats-sublabel {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.65rem;
+  color: var(--accent);
+}
+
+.stats-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stats-pill {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.stats-pill--pending {
+  border-color: rgba(229, 9, 20, 0.25);
+  color: var(--accent);
+  background: rgba(229, 9, 20, 0.06);
+}
+.back-to-top {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2rem;
+  z-index: 400;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: background 0.2s, transform 0.2s, opacity 0.2s;
+  animation: fadeIn 0.2s ease;
+}
+
+.back-to-top:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+}

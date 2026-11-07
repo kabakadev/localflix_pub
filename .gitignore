@@ -1,0 +1,39 @@
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# ── Runtime files (machine-specific, never commit these) ─────────────────────
+# DB is auto-rebuilt from the filesystem on first run
+backend/media_cache.db
+media_cache.db
+
+# Config contains local paths and API keys — different on every machine
+backend/config.json
+config.json
+
+# ── Thumbnails ────────────────────────────────────────────────────────────────
+# Flask backend writes ffmpeg thumbnails to /tmp — but cover all bases
+/tmp/lflix_*.jpg
+backend/lflix_*.jpg
+
+# ── mpv screenshots ───────────────────────────────────────────────────────────
+# mpv saves screenshots to CWD by default (backend/) until --screenshot-directory
+# is set. Catch anything already committed and any edge cases on older mpv builds.
+backend/mpv-shot*.jpg
+backend/mpv-shot*.png
+mpv-shot*.jpg
+mpv-shot*.png
+backend/*.jpg
+backend/*.png
+
+# ── Node ─────────────────────────────────────────────────────────────────────
+node_modules/
+dist/
+.vite/
+
+# ── OS noise ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
