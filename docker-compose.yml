@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+      - localflix_thumbs:/root/.localflix
+      - /home/videos:/home/videos
+    environment:
+      - FLASK_ENV=development
+
+  frontend:
+    build: ./frontend-v2
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  localflix_thumbs:
