@@ -2031,4 +2031,4 @@ if __name__ == '__main__':
 
     threading.Thread(target=run_scan, kwargs={"notify": True}, daemon=True).start()
 
-    app.run(port=5000, debug=True, threaded=True, use_reloader=False)
+    app.run(host=os.environ.get('HOST', '127.0.0.1'), port=5000, debug=True, threaded=True, use_reloader=False)
